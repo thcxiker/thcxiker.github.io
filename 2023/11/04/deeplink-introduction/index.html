@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Deeplink 的前世今生 | Hexo</title><meta name="author" content="Thcxiker"><meta name="copyright" content="Thcxiker"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Deeplink 的前世今生从 Voicfy 这篇论文说起Vu M D, Wang H, Li Z, et al. Voicify Your UI: Towards Android App Control with Voice Commands[J]. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Te">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deeplink 的前世今生">
+<meta property="og:url" content="http://thcxiker.github.io/2023/11/04/deeplink-introduction/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Deeplink 的前世今生从 Voicfy 这篇论文说起Vu M D, Wang H, Li Z, et al. Voicify Your UI: Towards Android App Control with Voice Commands[J]. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Te">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-11-04T01:59:35.881Z">
+<meta property="article:modified_time" content="2024-03-07T01:52:10.760Z">
+<meta property="article:author" content="Thcxiker">
+<meta property="article:tag" content="APPLINK">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://thcxiker.github.io/2023/11/04/deeplink-introduction/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Deeplink 的前世今生',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-07 09:52:10'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Deeplink 的前世今生</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-04T01:59:35.881Z" title="发表于 2023-11-04 09:59:35">2023-11-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-07T01:52:10.760Z" title="更新于 2024-03-07 09:52:10">2024-03-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Deeplink 的前世今生"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Deeplink-的前世今生"><a href="#Deeplink-的前世今生" class="headerlink" title="Deeplink 的前世今生"></a>Deeplink 的前世今生</h1><h4 id="从-Voicfy-这篇论文说起"><a href="#从-Voicfy-这篇论文说起" class="headerlink" title="从 Voicfy 这篇论文说起"></a>从 Voicfy 这篇论文说起</h4><p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/3581998" title="论文地址">Vu M D, Wang H, Li Z, et al. Voicify Your UI: Towards Android App Control with Voice Commands[J]. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 2023, 7(1): 1-22.</a></p>
+<p>为了方便之后的介绍我们这里简要概括一下这篇论文</p>
+<p>这篇论文的主要工作包括</p>
+<p><img src="/2023/11/04/deeplink-introduction/a1f49f00-7889-11ee-b65e-675bf5edc2b5.jpeg?v=1&type=image"></p>
+<p>图一、上下文数据的提取之一 静态分析</p>
+<ul>
+<li><p>为了给执行操作提供上下文数据使用静态+动态的方式</p>
+<p>1.在 app 应用数据中获取 Manifest.xml 之后静态分析获取 Intent object 从中提取出目标组件和动作</p>
+<p>2.来自设备屏幕的动态数据，以识别屏幕上的 UI 元素并执行交互</p>
+<p>对获取的数据进行存储</p>
+<p><img src="/2023/11/04/deeplink-introduction/aa22f290-7883-11ee-b65e-675bf5edc2b5.jpeg" alt="aa22f290-7883-11ee-b65e-675bf5edc2b5"></p>
+<p>图二、命令分析器的训练和一个推断示例</p>
+</li>
+<li><p>根据自定义的上下文无关文法 和指定数据集 训练出一个指令分析器</p>
+</li>
+</ul>
+<p>接下来就是实施了，这篇论文的话使用的是一个自定义的 Dialogue manager，完成语音到文字再到 action 的实施，再通过 action 生成 intent 对象 从而生成一个动作目标 ( action intent ) 队列进而一步一步的执行</p>
+<p><img src="/2023/11/04/deeplink-introduction/image-20231114213655017.png" alt="image-20231114213655017"></p>
+<p>图三、与应用有关的 Action 的传统运作方式</p>
+<p>现在大家应该已经对这篇论文有了初步的了解了，本文的创新点就在于与传统的语音助手相比大大提高了覆盖范围，简单来说就是 更多的 app 能用语音助手调用 并且能干更多的事情了</p>
+<p>现在可以回到正题了，所以到底什么是 Deeplink 呢。</p>
+<p>在图一可以发现根据静态文档的分析咱们实际上是生成了两种 Intent 对象 ，分别是~~~~~</p>
+<p>它们在经过一系列处理后实际上的操作就如下图所示 一个是拆分……另一个则是一步到位避开了繁杂的交互</p>
+<p>显然后者无论是在效率和用户体验上都做的更好</p>
+<blockquote>
+<p>In-app shortcuts helped users to achieve Task 1 in Section 6 with &#x3D;&#x3D;only one-third of the time taken without direct invocation, as well as receiving very positive feedback from user responses.&#x3D;&#x3D; Not only users who are unable to perform physical touch on the screen will be rewarded by the feature, but also users who can physically control the smartphone using their hands will use this feature to accelerate their tasks.</p>
+</blockquote>
+<p><img src="/2023/11/04/deeplink-introduction/845d6fc0-788a-11ee-b65e-675bf5edc2b5.jpeg" alt="845d6fc0-788a-11ee-b65e-675bf5edc2b5"></p>
+<p>图四、两种唤醒方式</p>
+<p>目前咱们可以将 Deeplink 简单理解成一站式的页面直达，在语音交互领域有着高效率，少交互的优点</p>
+<p>除了在语音助手上的使用之外，它还能干嘛呢</p>
+<h4 id="Deeplink-的发展"><a href="#Deeplink-的发展" class="headerlink" title="Deeplink 的发展"></a>Deeplink 的发展</h4><p>在安卓开发文档上是这么描述的：</p>
+<blockquote>
+<p><strong>深层链接</strong>是指将用户直接转到应用中的特定内容的网址。在 Android 中，您可以通过添加  <a target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/components/intents-filters?hl=zh-cn">intent 过滤器</a>以及从传入的 intent 提取数据来设置深层链接，以便将用户吸引到正确的 Activity。</p>
+<p>创建 Android 应用链接的一般步骤如下：</p>
+<ol>
+<li><p><strong>创建指向应用中特定内容的深层链接</strong>：在您的应用清单中，为网站 URI 创建 intent 过滤器，并将应用配置为使用来自相关 intent 的数据，以便将用户引导至应用中的正确内容。如需了解详情，请参阅<a target="_blank" rel="noopener" href="https://developer.android.google.cn/training/app-links/deep-linking?hl=zh-cn">创建指向应用内容的深层链接</a>。</p>
+</li>
+<li><p><strong>为深层链接添加验证要求</strong>：将应用配置为要求验证应用链接。然后，在您的网站上发布 Digital Asset Links JSON 文件，以通过  <a target="_blank" rel="noopener" href="https://support.google.com/webmasters/answer/9008080?hl=zh-cn">Google Search Console</a>  验证所有权。如需了解详情，请参阅<a target="_blank" rel="noopener" href="https://developer.android.google.cn/training/app-links/verify-android-applinks?hl=zh-cn">验证应用链接</a>。</p>
+</li>
+</ol>
+</blockquote>
+<p>太长不看 <strong>本质上就是通过 web 调用原生 App，依赖 URL 实现</strong></p>
+<p>URL Scheme 的协议样式如下：</p>
+<p><strong>Scheme:&#x2F;&#x2F;host:port&#x2F;path?query</strong></p>
+<p><img src="/2023/11/04/deeplink-introduction/72051750-78a4-11ee-b65e-675bf5edc2b5.jpeg" alt="72051750-78a4-11ee-b65e-675bf5edc2b5"></p>
+<p>图五、voicfyapp 内部提取的 deeplink</p>
+<p>在这个过程中需要满足的前提条件是：</p>
+<ul>
+<li><p>社交平台或浏览器：必须支持打开目标 App，需要经过一些处理才能实现。比如京东 App 可以从微信上直接打开，淘宝 App 却不可以，这也是由于平台的选择性开放和限制。</p>
+</li>
+<li><p>App 本身：必须能够获取参数，并且设置好唤醒地址，才能解析参数，定位到具体位置</p>
+</li>
+</ul>
+<p>在此基础上发展出来了上中下三层应用</p>
+<p>在 APP 时代，搜索公司无法索引到 APP 内部的数据，因此搜索公司希望能够建立 Web 和 APP 之间的关系的索引，因此它对于 Deep Link 是一个拥抱的态度。谷歌&#x2F;百度&#x2F;苹果都提供技术和接口，让 APP 开发者提交 Web 和 APP 直接的映射关系，对于有映射的 WEB 结果，用户有机会直接打开 APP，提高用户体验</p>
+<p><img src="/2023/11/04/deeplink-introduction/580def00-78a1-11ee-b65e-675bf5edc2b5.jpeg" alt="580def00-78a1-11ee-b65e-675bf5edc2b5"></p>
+<p><img src="/2023/11/04/deeplink-introduction/a07cd7d0-78a4-11ee-b65e-675bf5edc2b5.jpeg" alt="a07cd7d0-78a4-11ee-b65e-675bf5edc2b5"></p>
+<p>图六、Deep Link 技术产品栈</p>
+<h4 id="Challenges-Chances"><a href="#Challenges-Chances" class="headerlink" title="Challenges&amp;&amp;Chances"></a>Challenges&amp;&amp;Chances</h4><h5 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h5><p>虽然如上面所讲 deeplink 有着很多好处，但是作为早在 Android 6 之前就发布的技术，其实它现在主要的用处也就是在广告上。(下载某 app……)</p>
+<p>1、最直观的问题就是高昂的开发费用，即使有了如此多的协助开发工具，它的开发费用还是无法被忽视的，只有较大型的 app 开发商才有条件对其进行针对性适配。</p>
+<blockquote>
+<p>Among the top 200 mobile apps only 22 percent are using “deep links” from their websites into their mobile apps. This is according to an analysis by URX. Deep links are those that send a user from a website to a relevant page, piece of content or search result within a mobile app as opposed。</p>
+<p>by Marketing Land 2014</p>
+</blockquote>
+<p>2、其次就是 Intent 的局限性导致的 deeplink 的局限性，基于 intent 的消息传递机制不能覆盖所有的 app 尤其是对那些采用公共对象传递的 app 无法到达指定界面（类比 post get…. 以及需要用户参与时的</p>
+<p>图七、一个依赖用户动作的<img src="/2023/11/04/deeplink-introduction/403be840-78ac-11ee-b65e-675bf5edc2b5.jpeg" alt="403be840-78ac-11ee-b65e-675bf5edc2b5">示例</p>
+<p>3、安全性和隐私性，url 的方式虽然方便简单，但是越多的 link 代表着越多的暴露危险，必须采取一定措施预防….</p>
+<h5 id="Chances"><a href="#Chances" class="headerlink" title="Chances"></a>Chances</h5><p>相关论文中也对上面的问题进行了讨论这里简单介绍一下</p>
+<p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/2906388.2906416">Azim, Tanzirul, Oriana Riva, and Suman Nath. “uLink: Enabling user-defined deep linking to app content.” Proceedings of the 14th Annual International Conference on mobile systems, applications, and services. 2016.</a></p>
+<p>主要针对问题 2</p>
+<p><img src="/2023/11/04/deeplink-introduction/fa3be720-78a9-11ee-b65e-675bf5edc2b5.jpeg" alt="fa3be720-78a9-11ee-b65e-675bf5edc2b5"></p>
+<p>图八、Ulink 示例</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1605.06928v1">Ma, Yun, et al. “DroidLink: Automated generation of deep links for Android apps.” arXiv preprint arXiv:1605.06928 (2016).</a><br><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/3178876.3186059">Yun Ma, Ziniu Hu, Yunxin Liu, Tao Xie, and Xuanzhe Liu. 2018. Aladdin: Automating Release of Deep-Link APIs on Android. In Proceedings of the 2018 World Wide Web Conference (WWW ’18). International World Wide Web Conferences Steering Committee, Republic and Canton of Geneva, Switzerland, 1469–1478.</a></p>
+<p>针对问题一 都是讲的自动化（应该是阿里做的</p>
+<p><a target="_blank" rel="noopener" href="https://doi.org/10.1145/3307334.3326102">Yongjian Hu, Oriana Riva, Suman Nath, and Iulian Neamtiu. 2019. Elix: Path-Selective Taint Analysis for Extracting Mobile App Links. In Proceedings of the 17th Annual International Conference on Mobile Systems, Applications, and Services (MobiSys ‘19). Association for Computing Machinery, New York, NY, USA, 193–206.</a></p>
+<p><img src="/2023/11/04/deeplink-introduction/06859d10-78a9-11ee-b65e-675bf5edc2b5.jpeg" alt="06859d10-78a9-11ee-b65e-675bf5edc2b5"></p>
+<p>图八、发现应用程序链接和提取新应用程序链接的方法比较</p>
+<blockquote>
+<p>Elix adopts a novel, path-selective &#x3D;&#x3D;taint analysis&#x3D;&#x3D; that leverages symbolic execution to reason about path constraints and abandon infeasible paths</p>
+</blockquote>
+<h5 id="Ideas"><a href="#Ideas" class="headerlink" title="Ideas"></a>Ideas</h5><p>结合以上论文和语音助手目前的困境自然而然地想到可以实现一个自给自足的 deeplink–control 系统,在效率和交互方面能有很大提升</p>
+<p>在数据挖掘方面可以针对 Deeplink 的使用构造一个数据集？？？</p>
+<p>利用 deeplink 与无障碍结合~~</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>首先！要注意某些功能的冷门用途，deeplink 在业界其实是很少用在语音助手上的</p>
+<p>其次！要多多关注安卓开发的新特性，比如<strong>Grammar Gender 运用在交互上</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://thcxiker.github.io">Thcxiker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://thcxiker.github.io/2023/11/04/deeplink-introduction/">http://thcxiker.github.io/2023/11/04/deeplink-introduction/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://thcxiker.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/APPLINK/">APPLINK</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/11/04/AS/" title="Android studio 代理设置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Android studio 代理设置</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/15/link%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%8B%93%E5%B1%95/" title="link的进一步拓展"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-15</div><div class="title">link的进一步拓展</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Thcxiker</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Deeplink-%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F"><span class="toc-number">1.</span> <span class="toc-text">Deeplink 的前世今生</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E-Voicfy-%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E8%AF%B4%E8%B5%B7"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">从 Voicfy 这篇论文说起</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deeplink-%E7%9A%84%E5%8F%91%E5%B1%95"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">Deeplink 的发展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Challenges-Chances"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">Challenges&amp;&amp;Chances</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Challenges"><span class="toc-number">1.0.0.3.1.</span> <span class="toc-text">Challenges</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Chances"><span class="toc-number">1.0.0.3.2.</span> <span class="toc-text">Chances</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Ideas"><span class="toc-number">1.0.0.3.3.</span> <span class="toc-text">Ideas</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/07/UI%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%80%9D%E8%80%83/" title="UI的进一步思考">UI的进一步思考</a><time datetime="2024-03-06T23:35:03.000Z" title="发表于 2024-03-07 07:35:03">2024-03-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/21/code/" title="code">code</a><time datetime="2023-12-21T02:22:19.000Z" title="发表于 2023-12-21 10:22:19">2023-12-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/07/twoweeks/" title="twoweeks">twoweeks</a><time datetime="2023-12-07T03:32:54.000Z" title="发表于 2023-12-07 11:32:54">2023-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/20/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/" title="论文分享">论文分享</a><time datetime="2023-11-20T05:56:28.000Z" title="发表于 2023-11-20 13:56:28">2023-11-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/15/link%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%8B%93%E5%B1%95/" title="link的进一步拓展">link的进一步拓展</a><time datetime="2023-11-15T01:19:38.000Z" title="发表于 2023-11-15 09:19:38">2023-11-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Thcxiker</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
