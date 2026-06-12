@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Match & Player Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="site-backdrop" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-particles"></div>
+      <div class="bg-vortex"></div>
+    </div>
+
+    <header class="report-header">
+      <div>
+        <a class="report-back" href="index.html">← Dashboard</a>
+        <p class="eyebrow">Match Report</p>
+        <h1 id="reportTitle">比赛与球员总结</h1>
+      </div>
+      <div class="report-score" id="reportScore"></div>
+    </header>
+
+    <main class="page-shell report-shell">
+      <section class="report-grid">
+        <article class="panel report-main-panel">
+          <div class="panel-heading compact split">
+            <div>
+              <p class="eyebrow">Tactical Reading</p>
+              <h2>比赛总结</h2>
+            </div>
+            <span class="panel-note" id="reportSource"></span>
+          </div>
+          <div class="report-narrative" id="reportNarrative"></div>
+        </article>
+
+        <aside class="panel report-evidence-panel">
+          <div class="panel-heading compact">
+            <p class="eyebrow">Data Evidence</p>
+            <h2>数据证据</h2>
+          </div>
+          <div class="report-kpis" id="reportKpis"></div>
+          <div class="report-files" id="reportFiles"></div>
+        </aside>
+      </section>
+
+      <section class="report-grid report-grid-secondary">
+        <article class="panel player-report-panel">
+          <div class="panel-heading compact split">
+            <div>
+              <p class="eyebrow">Player Report</p>
+              <h2>球员表现总结</h2>
+            </div>
+            <span class="panel-note">shots + xG + passing rate</span>
+          </div>
+          <div class="player-report-list" id="playerReportList"></div>
+        </article>
+
+        <article class="panel shot-report-panel">
+          <div class="panel-heading compact">
+            <p class="eyebrow">Shot Evidence</p>
+            <h2>射门事件表</h2>
+          </div>
+          <div class="shot-table" id="shotTable"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="data/match-data.js"></script>
+    <script src="report.js"></script>
+  </body>
+</html>

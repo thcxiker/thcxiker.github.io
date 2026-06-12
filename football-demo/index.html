@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Match Intelligence Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="site-backdrop" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-particles"></div>
+      <div class="bg-vortex"></div>
+    </div>
+
+    <header class="match-header">
+      <div class="hero-aura" aria-hidden="true"></div>
+      <div class="header-copy">
+        <div class="brand-ribbon" aria-label="HKUST(GZ) INNOTECH 2026 创科嘉年华">
+          <span class="hkust-mark">HKUST(GZ)</span>
+          <span class="spark-mark" aria-hidden="true"></span>
+          <span class="brand-wordmark">INNOTECH 2026 · 创科嘉年华</span>
+        </div>
+        <p class="eyebrow" id="competition"></p>
+        <h1 id="matchTitle">Match Report</h1>
+        <div class="hero-actions">
+          <a class="report-link" href="report.html">比赛与球员报告 ↗</a>
+        </div>
+      </div>
+      <div class="scoreline" aria-label="match score">
+        <div class="team team-home">
+          <span class="team-code" id="homeCode"></span>
+          <strong id="homeScore"></strong>
+        </div>
+        <span class="score-divider">:</span>
+        <div class="team team-away">
+          <strong id="awayScore"></strong>
+          <span class="team-code" id="awayCode"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="overview-strip" id="headlineMetrics" aria-label="headline metrics"></section>
+
+      <section class="primary-grid" aria-label="video and match summary">
+        <article class="video-panel">
+          <div class="video-frame">
+            <video id="matchVideo" controls muted playsinline preload="metadata"></video>
+            <div class="video-status" id="videoStatus"></div>
+          </div>
+          <div class="highlight-filters" id="highlightFilters" aria-label="highlight filters"></div>
+          <div class="highlight-list" id="highlightList"></div>
+        </article>
+
+        <aside class="summary-panel">
+          <div class="panel-heading">
+            <p class="eyebrow">Match Summary</p>
+            <h2>比赛结论</h2>
+          </div>
+          <div class="verdict-list" id="verdictList"></div>
+          <div class="formations">
+            <div>
+              <span id="homeName"></span>
+              <strong id="homeFormation"></strong>
+            </div>
+            <div>
+              <span id="awayName"></span>
+              <strong id="awayFormation"></strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="analytics-grid" aria-label="match analytics">
+        <article class="panel metrics-panel">
+          <div class="panel-heading compact">
+            <p class="eyebrow">Hudl Coverage</p>
+            <h2>数据覆盖</h2>
+          </div>
+          <div class="segmented" id="metricTabs"></div>
+          <div class="metric-table" id="metricTable"></div>
+        </article>
+
+        <article class="panel pitch-panel">
+          <div class="panel-heading compact split">
+            <div>
+              <p class="eyebrow">Event Map</p>
+              <h2>场区可视化</h2>
+            </div>
+            <div class="segmented small" id="pitchTabs"></div>
+          </div>
+          <svg id="pitchSvg" viewBox="0 0 120 80" role="img" aria-label="pitch visualization"></svg>
+          <div class="legend" id="pitchLegend"></div>
+        </article>
+
+        <article class="panel momentum-panel">
+          <div class="panel-heading compact">
+            <p class="eyebrow">xG Trend</p>
+            <h2>机会质量走势</h2>
+          </div>
+          <svg id="momentumSvg" viewBox="0 0 640 260" role="img" aria-label="expected goals momentum"></svg>
+        </article>
+
+        <article class="panel timeline-panel">
+          <div class="panel-heading compact">
+            <p class="eyebrow">Match Events</p>
+            <h2>关键时间线</h2>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </article>
+      </section>
+
+      <section class="tactical-dashboard" aria-label="tactical dashboard">
+        <article class="panel stat-compare-panel">
+          <div class="panel-heading compact">
+            <p class="eyebrow">Match Detail</p>
+            <h2>比赛数据对比</h2>
+          </div>
+          <div class="stat-compare" id="statCompare"></div>
+        </article>
+
+        <article class="panel pass-network-panel">
+          <div class="panel-heading compact split">
+            <div>
+              <p class="eyebrow">Passing Summary</p>
+              <h2>传球网络</h2>
+            </div>
+            <span class="panel-note">line width = pass volume</span>
+          </div>
+          <svg id="passNetworkSvg" viewBox="0 0 120 80" role="img" aria-label="passing network"></svg>
+        </article>
+
+        <article class="panel pass-rate-panel">
+          <div class="panel-heading compact">
+            <p class="eyebrow">Player Rate</p>
+            <h2>传球成功率</h2>
+          </div>
+          <div class="pass-rate-list" id="passRateList"></div>
+        </article>
+
+        <article class="panel pass-matrix-panel">
+          <div class="panel-heading compact split">
+            <div>
+              <p class="eyebrow">Passing Matrix</p>
+              <h2>球员传球矩阵</h2>
+            </div>
+            <span class="panel-note">cell intensity = completed passes</span>
+          </div>
+          <div class="matrix-wrap" id="passingMatrix"></div>
+        </article>
+
+        <article class="panel channel-panel">
+          <div class="panel-heading compact">
+            <p class="eyebrow">Attack Channels</p>
+            <h2>进攻通道分布</h2>
+          </div>
+          <div class="channel-bars" id="channelBars"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <span>Built for INNOTECH 2026 · HKUST(GZ)</span>
+      <span id="sourceNote"></span>
+    </footer>
+
+    <script src="data/match-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
