@@ -46,9 +46,9 @@ Experience
     <img src="images/logos/jlu-logo.svg" alt="Jilin University logo" class="experience-logo">
     <div class="experience-info">
       <strong>Jilin University</strong><br>
-      <em>2024.09 - 2027.09</em><br>
-      M.S. in Software Engineering, recommended admission.<br>
-      <span style="color:#888;">Graduate research on trustworthy AI systems and LLM security.</span>
+      <em>2024.09 - Present (Expected 2027.09)</em><br>
+      M.S. student in Software Engineering, recommended admission.<br>
+      <span style="color:#888;">Ongoing research on trustworthy AI systems and LLM security.</span>
     </div>
   </div>
 
