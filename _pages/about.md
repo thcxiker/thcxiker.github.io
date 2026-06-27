@@ -188,17 +188,3 @@ Projects
     </div>
   </div>
 </div>
-
-<div class="project-card" data-category="project">
-  <div style="display: flex; align-items: center;">
-    <div class="pub-media-rotator" data-interval="4000" style="position: relative; width: 320px; height: 180px; margin-right: 20px; border-radius: 8px; overflow: hidden; flex: 0 0 auto;">
-      <img src="images/logos/hkust-gz-logo.svg" alt="HKUST(GZ) project thumbnail" style="width: 320px; height: 180px; object-fit: contain; display: block; margin: 0 auto;">
-    </div>
-    <div>
-      <strong>Multimodal Large Model for Integrated Traditional Chinese and Western Medicine</strong><br>
-      I contributed to a national major science and technology project proposal, including technical route refinement, multimodal data fusion planning, severe-disease early-warning modeling, and clinical validation design. The project has been approved.
-      <br>
-      <b><i style="color:#83a1c7;">National Project Proposal &nbsp;</i></b>
-    </div>
-  </div>
-</div>
