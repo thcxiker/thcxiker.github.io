@@ -11,9 +11,11 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{% if page.stylesheets %}
+  {% for stylesheet in page.stylesheets %}
+    <link rel="stylesheet" href="{{ stylesheet | relative_url }}">
+  {% endfor %}
+{% endif %}
 
 <meta http-equiv="cleartype" content="on">
-<head>
-  <base target="_blank">
-</head>
